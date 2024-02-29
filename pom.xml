@@ -57,7 +57,7 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
-          <sonar.host.url>http://your-sonarqube-server:9000</sonar.host.url>
+          <sonar.host.url>http://104.24.19.1999:9000</sonar.host.url>
           <sonar.projectKey>com.example:my-java-app</sonar.projectKey>
           <sonar.projectName>My Java App</sonar.projectName>
           <sonar.projectVersion>1.0-SNAPSHOT</sonar.projectVersion>
