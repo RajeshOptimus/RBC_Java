@@ -1,16 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <!-- ... existing configuration ... -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>my-java-app</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>my-java-app</name>
+  <url>http://maven.apache.org</url>
 
   <properties>
-    <!-- ... existing properties ... -->
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <sonar.host.url>http://104.24.19.199:9000</sonar.host.url>
+    <sonar.host.url>http://104.24.19.1999:9000</sonar.host.url>
   </properties>
 
   <dependencies>
-    <!-- ... existing dependencies ... -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -21,7 +25,20 @@
 
   <build>
     <plugins>
-      <!-- ... existing plugins ... -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <!-- Change the mainClass to match your actual main class -->
+              <mainClass>com.example.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
 
       <!-- SonarQube Scanner Plugin -->
       <plugin>
@@ -37,21 +54,13 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-
-      <!-- Maven JAR Plugin -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.0</version>
         <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <!-- Change the mainClass to match your actual main class -->
-              <mainClass>com.example.App</mainClass>
-            </manifest>
-          </archive>
+          <source>1.8</source>
+          <target>1.8</target>
+          <sonar.host.url>http://your-sonarqube-server:9000</sonar.host.url>
+          <sonar.projectKey>com.example:my-java-app</sonar.projectKey>
+          <sonar.projectName>My Java App</sonar.projectName>
+          <sonar.projectVersion>1.0-SNAPSHOT</sonar.projectVersion>
         </configuration>
       </plugin>
     </plugins>
